@@ -53,7 +53,7 @@ if response.status_code == 200:
 else:
     print(f"Failed to get response from API. Status code: {response.status_code}")
 ```
-==> Code saved to: C:\Users\aricb\OneDrive\Documents\autoaidev\v42-rel1_20250326T010203Z_fdbk0_iter1.py
+==> Code saved to: C:\Users\User\OneDrive\Documents\autoaidev\v42-rel1_20250326T010203Z_fdbk0_iter1.py
 
 ---- Running code => feedback 0, iteration 1 ----
 -------- Code Output --------
