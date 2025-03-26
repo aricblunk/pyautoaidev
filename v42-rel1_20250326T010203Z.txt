@@ -1,0 +1,95 @@
+==============================================================
+Welcome to v42-rel1!
+We do a multi-step iteration with code generation, code judgment, and optional user feedback.
+Keeping only the last 3 code attempts in context, plus user feedback.
+
+==============================================================
+
+<<User project description:>>
+
+    You, an LLM, are being called by a python script on my, the user's, computer.
+    You are running locally thus I am not paying per token, and I can run you indefinitely for only electricity cost.
+    The API to access you is located at http://127.0.0.1:1234/v1/chat/completions
+    Please try to write a python script that demonstrates connecting to the API and getting a test response in a chat message format.
+    The output format should resemble an IRC log, as [timestamp] <user>:
+    
+
+
+==== Code Generation Step => Feedback 0, Code Iteration 1 ====
+---- GPT Response (Code Generation) ----
+
+```python
+import requests
+from datetime import datetime
+
+# Define the API endpoint
+api_url = "http://127.0.0.1:1234/v1/chat/completions"
+
+# Define the payload for the request
+payload = {
+    "model": "your-model-name",  # Replace with your model name if needed
+    "messages": [
+        {"role": "user", "content": "Hello, how are you?"}
+    ]
+}
+
+# Make the POST request to the API
+response = requests.post(api_url, json=payload)
+
+# Check if the request was successful
+if response.status_code == 200:
+    # Parse the JSON response
+    data = response.json()
+
+    # Extract the assistant's message
+    assistant_message = data['choices'][0]['message']['content']
+
+    # Get the current timestamp
+    timestamp = datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+
+    # Print the IRC log format
+    print(f"[{timestamp}] <user>: Hello, how are you?")
+    print(f"[{timestamp}] <assistant>: {assistant_message}")
+else:
+    print(f"Failed to get response from API. Status code: {response.status_code}")
+```
+==> Code saved to: C:\Users\aricb\OneDrive\Documents\autoaidev\v42-rel1_20250326T010203Z_fdbk0_iter1.py
+
+---- Running code => feedback 0, iteration 1 ----
+-------- Code Output --------
+[2025-03-25 21:02:10] <user>: Hello, how are you?
+[2025-03-25 21:02:10] <assistant>: Hi there! I'm doing well, thank you. How about you? How's your day going so far?
+
+
+[Code execution took 0.85 seconds.]
+
+----------------------------
+
+==> Output saved to: C:\Users\aricb\OneDrive\Documents\autoaidev\v42-rel1_20250326T010203Z_fdbk0_iter1.txt
+==== Code Judgment Step => feedback 0, code iteration 1 ====
+---- GPT Response (Code Judgment) ----
+
+Project output fully satisfies project description, that is the final version and we can stop iterating
+~~~~ GPT indicates the project is complete. Moving to user review. ~~~~
+
+User, please review and provide feedback or press Enter to skip.
+<<User feedback:>> 
+No user feedback => project finalized. Goodbye!
+--------------------------------------------------------------
+Iteration Summary:
+ Feedback round:         0
+ Code iteration:         1
+ GPT pass/fail status:   PASS
+ User feedback status:   Accepted
+   Code Generation time: 5.91 s
+   Code Execution time:  0.85 s
+   Judgment Step time:   1.37 s
+   User Feedback time:   33.59 s
+ Total iteration time:   41.72 s
+--------------------------------------------------------------
+
+
+===================== FINAL SUMMARY =====================
+Total PASS statements: 1
+Total FAIL statements: 0
+Exiting script now. Goodbye!
